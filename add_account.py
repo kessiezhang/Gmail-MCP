@@ -39,8 +39,11 @@ os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
 
 
 def config_dir() -> Path:
-    raw = os.environ.get("GMAIL_MCP_CONFIG_DIR", "~/.gmail-mcp")
-    return Path(os.path.expanduser(raw))
+    raw = os.environ.get("GMAIL_MCP_CONFIG_DIR")
+    if raw:
+        return Path(os.path.expanduser(raw))
+    # Default: keep accounts/tokens alongside this script (inside the repo).
+    return Path(__file__).resolve().parent
 
 
 def main() -> int:
