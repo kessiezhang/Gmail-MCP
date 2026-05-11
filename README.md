@@ -1,3 +1,7 @@
+# gmail-mcp
+
+A minimal multi-account Gmail MCP server in a single Python file.
+
 ## What it does
 
 Five tools, one file, no TypeScript build:
@@ -21,7 +25,7 @@ The full `ghub/` server pulls in TypeScript, Express, `pdf-parse`, `mammoth`, `x
 ### 1. Install Python dependencies
 
 ```bash
-cd ghub-lite
+cd gmail-MCP
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -45,9 +49,9 @@ Run once per Gmail account:
 python add_account.py personal /path/to/credentials.json
 ```
 
-A browser window opens, you sign in, and the script saves a token under `~/.ghub-lite/accounts/personal/`. Repeat with a different `account_id` (e.g. `work`) for additional accounts.
+A browser window opens, you sign in, and the script saves a token under `~/.gmail-mcp/accounts/personal/`. Repeat with a different `account_id` (e.g. `work`) for additional accounts.
 
-To override the storage location, set `GHUB_LITE_CONFIG_DIR` before running.
+To override the storage location, set `GMAIL_MCP_CONFIG_DIR` before running.
 
 ### 4. Add to your MCP client
 
@@ -56,9 +60,9 @@ For Claude Desktop / Cowork, add to your MCP config:
 ```json
 {
   "mcpServers": {
-    "ghub-lite": {
-      "command": "/absolute/path/to/ghub-lite/.venv/bin/python",
-      "args": ["/absolute/path/to/ghub-lite/server.py"]
+    "gmail-mcp": {
+      "command": "/absolute/path/to/gmail-MCP/.venv/bin/python",
+      "args": ["/absolute/path/to/gmail-MCP/server.py"]
     }
   }
 }
@@ -67,13 +71,13 @@ For Claude Desktop / Cowork, add to your MCP config:
 If you set a custom config dir during onboarding, also pass it through:
 
 ```json
-"env": { "GHUB_LITE_CONFIG_DIR": "/custom/path" }
+"env": { "GMAIL_MCP_CONFIG_DIR": "/custom/path" }
 ```
 
 ## Directory layout
 
 ```
-~/.ghub-lite/
+~/.gmail-mcp/
 ├── accounts.json          # account index (id, email, paths, enabled flag)
 └── accounts/
     ├── personal/

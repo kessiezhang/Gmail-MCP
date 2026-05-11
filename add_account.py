@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-One-time OAuth onboarding for ghub-lite.
+One-time OAuth onboarding for gmail-mcp.
 
 Usage:
     python add_account.py <account_id> /path/to/credentials.json
@@ -10,8 +10,8 @@ Google Cloud Console (Desktop application type).
 
 This script will:
   1. Open a browser for you to sign in to the Gmail account
-  2. Save the access/refresh token under ~/.ghub-lite/accounts/<account_id>/token.json
-  3. Register the account in ~/.ghub-lite/accounts.json
+  2. Save the access/refresh token under ~/.gmail-mcp/accounts/<account_id>/token.json
+  3. Register the account in ~/.gmail-mcp/accounts.json
 
 After this you can run server.py and the account will appear in list_accounts.
 """
@@ -39,7 +39,7 @@ os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
 
 
 def config_dir() -> Path:
-    raw = os.environ.get("GHUB_LITE_CONFIG_DIR", "~/.ghub-lite")
+    raw = os.environ.get("GMAIL_MCP_CONFIG_DIR", "~/.gmail-mcp")
     return Path(os.path.expanduser(raw))
 
 

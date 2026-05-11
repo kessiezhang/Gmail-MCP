@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ghub-lite: a minimal multi-account Gmail MCP server.
+gmail-mcp: a minimal multi-account Gmail MCP server.
 
 Five tools, no build step, no OCR, no attachments:
   - list_accounts
@@ -47,7 +47,7 @@ SCOPES = [
 
 
 def config_dir() -> Path:
-    raw = os.environ.get("GHUB_LITE_CONFIG_DIR", "~/.ghub-lite")
+    raw = os.environ.get("GMAIL_MCP_CONFIG_DIR", "~/.gmail-mcp")
     return Path(os.path.expanduser(raw))
 
 
@@ -421,7 +421,7 @@ def tool_unsubscribe_email(account_id: str, message_id: str) -> dict:
 # MCP wiring
 # ---------------------------------------------------------------------------
 
-server = Server("ghub-lite")
+server = Server("gmail-mcp")
 
 
 TOOLS: list[Tool] = [
